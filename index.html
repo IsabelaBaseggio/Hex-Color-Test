@@ -14,29 +14,33 @@
 
     <header>
         <h1>Hex Color Test</h1>
+        <button id="start" onclick="startGame()">Start</button>
     </header>
 
-    <main>
+    <main id="main">
 
         <div class="containerQuestion">
-            <h3>Qual cor esse hexadecimal representa?</h3>
-            <div class="hex" id="hex">Hexadecimal</div>
+            <h3>Which color does this hexadecimal represent?</h3>
+            <div class="hex"></div>
         </div>
 
         <div class="containerColors">
-            <div class="color colorFront correct" id="5454">color1</div>
-            <div class="color colorBack wrong" id="34234234">color2</div>
-            <div class="color colorFront wrong" id="23423423">color3</div>
-            <div class="color colorFront wrong" id="23423423">color4</div>
+            <div class="colorFront" id="5454">color1</div>
+            <div class="colorBack wrong" id="34234234">color2</div>
+            <div class="colorBack correct" id="23423423">color3</div>
+            <div class="colorBack wrong" id="23423423">color4</div>
         </div>
     </main>
 
     </div>
 
     <div id="result"> 
-        <h2>Seu resultado foi 7/10, parabéns!</h2>
+        <h2>Your score was 7/10, congratulations!</h2>
 
-        <button id="restart" onclick="restart()">Tentar novamente</button>
+        <button id="restart" onclick="restart()">Try again</button>
     </div>
+
+    <script src="./script/script.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url("../imgaes/bg.jpg");
+    background-size: cover;
+}
+
+.containerContent{
+    max-width: 800px;
+    padding: 10px;
+    position: absolute;
+    margin: auto;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+}
+
+header, .containerQuestion, .containerColors{
+    max-width: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+header{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+h1{
+    font-family: 'Kumar One Outline', Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.containerQuestion{
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 1em black;
+}
+
+h3{
+    font-size: 2em;
+    text-align: center;
+    padding: 10px;
+}
+
+.hex{
+    max-width: 50%;
+    margin: auto;
+    background-color: rgb(01, 02, 03, 0.50);
+}
+
+.hex, .color{
+    padding: 20px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+
+.containerColors{
+    margin-bottom: 30px;
+
+    display: grid;
+    grid-template: auto auto / auto auto;
+
+    gap: 20px;
+}
+
+.colorFront, .colorBack{
+    max-width: 100%;
+    box-shadow: 0 0 1em black;
+}
+
+.colorBack, .correct, .wrong{
+    background-color: rgb(01, 02, 03, 0.50);    
+}
+
+.correct{
+    box-shadow: 0 0 1em green;    
+}
+
+.wrong{
+    box-shadow: 0 0 1em red;
+}
+
+#result{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);   
+    margin: auto;
+    text-align: center;
+    display: none;
+}
+
+h2{
+    margin-top: calc(100% - 80%);
+    margin-bottom: 30px;
+    color: white;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#restart{
+    padding: 20px;
+    font-size: 20px;
+    background-color: purple;
+    background-repeat: repeat;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;    
+}

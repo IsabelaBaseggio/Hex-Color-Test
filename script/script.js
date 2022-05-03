@@ -53,6 +53,11 @@
 //     let question = document.getElementsByClassName("hex");
 //     question.innerHTML = sortHex;
 
+    console.log(typeof sortHex)
+    console.log(typeof questionHex)
 
 // }
 
+function colorResult() {
+
+}

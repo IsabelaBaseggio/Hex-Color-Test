@@ -4,7 +4,7 @@
 }
 
 body{
-    background-image: url("../imgaes/bg.jpg");
+    background-image: url(/images/bg.jpg);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -67,6 +67,7 @@ h3{
 
 .hex{
     max-width: 50%;
+    height: 40px;
     margin: auto;
     padding: 20px;
     border-radius: 10px;

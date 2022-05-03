@@ -38,11 +38,52 @@ let colorsRand = ["", "", "", ""];
 
     initializeSpaceColors(colorsRand);
 
+}
+
+// Gerando as colores aleatoriamente e colocando-as no array
+
+function createColors() {
+
+    const letters = '0123456789ABCDEF';
+    let hex = '#';
+    let i = 0;
+
+    while(i < 4) {
+        for (let j = 0; j < 6; j++) {
+            hex += letters[Math.floor(Math.random() * 16)];
+        }
+        colorsRand[i] = hex;
+        hex = '#';
+        i++;
+    }
+
+    initializeSpaceColors(colorsRand);
+
     questionColor(colorsRand);
 
     return colorsRand;
 
 // }
+
+function initializeSpaceColors(spaces) {
+
+    let containerColors = document.getElementById("containerColors");
+
+    spaces.forEach( space => {
+
+        let spaceElement = document.createElement('div');
+        spaceElement.classList.add(FRONT);
+
+        createSpaceContent(space, spaceElement);
+
+        spaceElement.addEventListener('click', colorResult)
+
+        containerColors.appendChild(spaceElement);
+        
+        
+    });
+
+}
 
 function initializeSpaceColors(spaces) {
 
@@ -81,7 +122,7 @@ function createSpaceFront(face, colorsRand, element){
 
 // Sorteando o Hexadecimal da pergunta
 
-// function questionColor(colors) {
+function questionColor(colors) {
 
     let sortHex = colors[Math.floor(Math.random() * (2 + 1))];
 

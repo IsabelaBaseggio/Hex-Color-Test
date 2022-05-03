@@ -4,7 +4,7 @@ const BACK = "colorBack";
 const CORRECT = "correct";
 const WRONG = "wrong";
 
-let colorsRand = [null];
+let colorsRand = ["", "", "", ""];
 
 
 function startGame() {
@@ -16,8 +16,6 @@ function startGame() {
 
     let showTest = document.getElementById("main");
     showTest.style.display = 'inline-block';
-
-    questionColor(colorsRand);
 
 }
 
@@ -38,21 +36,63 @@ function createColors() {
         i++;
     }
 
+    initializeSpaceColors(colorsRand);
+
+    questionColor(colorsRand);
+
     return colorsRand;
 
 }
+
+function initializeSpaceColors(spaces) {
+
+    let containerColors = document.getElementById("containerColors");
+
+    spaces.forEach( space => {
+
+        let spaceElement = document.createElement('div');
+        spaceElement.classList.add(FRONT);
+
+        createSpaceContent(space, spaceElement);
+
+        spaceElement.addEventListener('click', colorResult)
+
+        containerColors.appendChild(spaceElement);
+        
+        
+    });
+
+}
+
+function createSpaceContent(colorsRand, spaceElement){
+
+    createSpaceFront(FRONT, colorsRand, spaceElement);
+    createSpaceBack(BACK, colorsRand, spaceElement);
+
+}
+
+function createSpaceFront(face, colorsRand, element){
+
+    let spaceElementFace = document.createElement('div');
+    spaceElementFace.classList.add(FACE);
+
+}
+
 
 // Sorteando o Hexadecimal da pergunta
 
 function questionColor(colors) {
 
-    console.log(colors)
-
     let sortHex = colors[Math.floor(Math.random() * (2 + 1))];
 
-    let question = document.getElementsByClassName("hex");
-    question.innerHTML = sortHex;
+    let questionHex = document.getElementsByClassName("hex");
+    questionHex.innerHTML = sortHex;
 
+    console.log(typeof sortHex)
+    console.log(typeof questionHex)
 
 }
 
+function colorResult() {
+
+}

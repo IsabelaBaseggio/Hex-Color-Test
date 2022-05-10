@@ -1,121 +1,86 @@
-// // Classes
-// const FRONT = "colorFront";
-// const BACK = "colorBack";
-// const CORRECT = "correct";
-// const WRONG = "wrong";
+// Classes
+const FRONT = "colorFront";
+const BACK = "colorBack";
+const CORRECT = "correct";
+const WRONG = "wrong";
+const COLOR = "color";
 
-let colorsRand = ["", "", "", ""];
+let sortHex = null;
 
 
-// function startGame() {
+// iniciando o teste
 
-//     createColors();
+function startGame() {
 
-//     let hideBtn = document.getElementById("start");
-//     hideBtn.style.display = 'none';
+    test.createColors();
 
-//     let showTest = document.getElementById("main");
-//     showTest.style.display = 'inline-block';
+    questionColor(test.colorsRand)
 
-}
+    let hideBtn = document.getElementById("start");
+    hideBtn.style.display = 'none';
 
-// // Gerando as colores aleatoriamente e colocando-as no array
+    let showTest = document.getElementById("containerQuestion");
+    showTest.style.display = 'block';
 
-// function createColors() {
 
-//     const letters = '0123456789ABCDEF';
-//     let hex = '#';
-//     let i = 0;
+    cards = test.createCardColors();
 
-//     while(i < 4) {
-//         for (let j = 0; j < 6; j++) {
-//             hex += letters[Math.floor(Math.random() * 16)];
-//         }
-//         colorsRand[i] = hex;
-//         hex = '#';
-//         i++;
-//     }
-
-    initializeSpaceColors(colorsRand);
+    initializeCards(test.cards);
 
 }
 
-// Gerando as colores aleatoriamente e colocando-as no array
+// criando o visual das opções das cores
 
-function createColors() {
+function initializeCards() {
 
-    const letters = '0123456789ABCDEF';
-    let hex = '#';
-    let i = 0;
 
-    while(i < 4) {
-        for (let j = 0; j < 6; j++) {
-            hex += letters[Math.floor(Math.random() * 16)];
-        }
-        colorsRand[i] = hex;
-        hex = '#';
-        i++;
+    let colorsBoard = document.getElementById("colorsBoard"); // não funciona o appendChild se o elemento pai for pego pela Class(explicação não sei, mas fica a dica)
+
+
+    test.cards.forEach(card => {
+
+        let colorElement = document.createElement("div");
+        colorElement.classList.add(COLOR);
+        colorElement.id = card.id;
+
+
+
+        createSpaceContent(card, colorElement);
+
+        colorElement.addEventListener('click', colorResult);
+
+        colorsBoard.appendChild(colorElement);
+
+    });
+
+    console.log(cards);
+
+
+}
+
+//  criando o Front e Back das cores
+
+function createSpaceContent(card, colorElement) {
+
+    createSpaceFace(FRONT, card, colorElement);
+    createSpaceFace(BACK, card, colorElement);
+
+}
+
+function createSpaceFace(face, card, element) {
+
+    let colorElementFace = document.createElement('div');
+    colorElementFace.classList.add(face);
+
+    if (face == FRONT) {
+        colorElementFace.style.backgroundColor = "#" + card.id;
+    } else {
+        colorElementFace.innerHTML = "<strong>" + card.id + "</strong>";
+        colorElementFace.style.color = "#" + card.id;
     }
 
-    initializeSpaceColors(colorsRand);
+    element.appendChild(colorElementFace);
 
-    questionColor(colorsRand);
-
-    return colorsRand;
-
-// }
-
-function initializeSpaceColors(spaces) {
-
-    let containerColors = document.getElementById("containerColors");
-
-    spaces.forEach( space => {
-
-        let spaceElement = document.createElement('div');
-        spaceElement.classList.add(FRONT);
-
-        createSpaceContent(space, spaceElement);
-
-        spaceElement.addEventListener('click', colorResult)
-
-        containerColors.appendChild(spaceElement);
-        
-        
-    });
-
-}
-
-function initializeSpaceColors(spaces) {
-
-    let containerColors = document.getElementById("containerColors");
-
-    spaces.forEach( space => {
-
-        let spaceElement = document.createElement('div');
-        spaceElement.classList.add(FRONT);
-
-        createSpaceContent(space, spaceElement);
-
-        spaceElement.addEventListener('click', colorResult)
-
-        containerColors.appendChild(spaceElement);
-        
-        
-    });
-
-}
-
-function createSpaceContent(colorsRand, spaceElement){
-
-    createSpaceFront(FRONT, colorsRand, spaceElement);
-    createSpaceBack(BACK, colorsRand, spaceElement);
-
-}
-
-function createSpaceFront(face, colorsRand, element){
-
-    let spaceElementFace = document.createElement('div');
-    spaceElementFace.classList.add(FACE);
 
 }
 
@@ -124,16 +89,29 @@ function createSpaceFront(face, colorsRand, element){
 
 function questionColor(colors) {
 
-    let sortHex = colors[Math.floor(Math.random() * (2 + 1))];
+    sortHex = colors[Math.floor(Math.random() * (2 + 1))];
 
-    let questionHex = document.getElementsByClassName("hex");
-    questionHex.innerHTML = sortHex;
+    let questionHex = document.getElementById("hex");
+    questionHex.innerHTML = "<strong>" + sortHex + "</strong>";
 
-    console.log(typeof sortHex)
-    console.log(typeof questionHex)
-
-// }
+}
 
 function colorResult() {
+
+    let options = document.getElementById("colorsBoard").childNodes;
+
+    console.log(options);
+
+    // options.forEach(option => {
+    //     if(option.id == sortHex){
+    //         option.getElementsByClassName(FRONT).style.display = 'none';
+    //         option.getElementsByClassName(BACK).style.display = 'inlie-block';
+    //         option.classList.add(CORRECT);
+    //     } else {
+    //         option.getElementsByClassName(FRONT).style.display = 'none';
+    //         option.getElementsByClassName(BACK).style.display = 'inlie-block';
+    //         option.classList.add(WRONG);
+    //     }
+    // });
 
 }

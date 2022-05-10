@@ -1,8 +1,47 @@
 let test = {
 
+    sortHexa: null,
+
+    lockMode: false,
+
+    setedCard: null,
+
     colorsRand: [],
 
     cards: null,
+
+    // setando a opção selecionada e restringindo a seleção para apenas uma resposta
+
+    setCard: function(id) {
+
+        let card = this.cards.filter(card=>card.id==id)[0];
+
+        console.log(card)
+
+        if(card.fippled || this.lockMode) {
+            return false;
+        }
+
+        if(this.setedCard) {
+            this.setedCard = card;
+            this.lockMode = true;
+            return true;
+        }
+
+    },
+
+    // checando se a opção selecionada é a resposta certa
+
+    checkMatch: function() {
+        return this.setedCard.id === this.sortHexa;
+    },
+
+    // resetando a opção selecionada
+
+    clearCard: function() {
+        this.setedCard = null;
+        this.lockMode = null;
+    },
 
     // Gerando as colores aleatoriamente e colocando-as no array
 
@@ -20,6 +59,16 @@ let test = {
             hex = "";
             i++;
         }
+
+    },
+
+    // Sorteando a cor da pergunta
+
+    sortHex: function(){
+
+        this.sortHexa = this.colorsRand[Math.floor(Math.random() * (2 + 1))];
+
+        return this.sortHexa;
 
     },
 
@@ -43,7 +92,8 @@ let test = {
 
         return {
             id: color,
-            bg: color
+            bg: color,
+            fippled: false
         }
 
     }

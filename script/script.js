@@ -5,7 +5,17 @@ const CORRECT = "correct";
 const WRONG = "wrong";
 const COLOR = "color";
 
+let colorsBoard = null;
+
+let colorElement = null;
+
+let colorElementFace = null;
+
 let hex = null;
+
+let questionHex = null;
+
+let round = 1;
 
 let score = 0;
 
@@ -13,6 +23,14 @@ let score = 0;
 // iniciando o teste
 
 function startGame() {
+
+    colorsBoard = null;
+
+    colorElement = null;
+
+    colorElementFace = null;
+
+    round++;
 
     test.createColors();
 
@@ -36,12 +54,12 @@ function startGame() {
 function initializeCards() {
 
 
-    let colorsBoard = document.getElementById("colorsBoard"); // não funciona o appendChild se o elemento pai for pego pela Class(explicação não sei, mas fica a dica)
+    colorsBoard = document.getElementById("colorsBoard"); // não funciona o appendChild se o elemento pai for pego pela Class(explicação não sei, mas fica a dica)
 
 
     test.cards.forEach(card => {
 
-        let colorElement = document.createElement("div");
+        colorElement = document.createElement("div");
         colorElement.classList.add(COLOR);
         colorElement.id = card.id;
         colorElement.dataset.hex = card.id;
@@ -70,7 +88,7 @@ function createSpaceContent(card, colorElement) {
 
 function createSpaceFace(face, card, element) {
 
-    let colorElementFace = document.createElement('div');
+    colorElementFace = document.createElement('div');
     colorElementFace.classList.add(face);
 
     if (face == FRONT) {
@@ -97,9 +115,9 @@ function questionColor() {
 
     hex = test.sortHex();
 
-    let questionHex = document.getElementById("hex");
+    questionHex = document.getElementById("hex");
     questionHex.innerHTML = "<strong>" + hex + "</strong>";
-    questionHex.style.boxShadow = "none";
+    // questionHex.style.boxShadow = "none";
 
     return hex;
 
@@ -110,7 +128,12 @@ function questionColor() {
 
 function colorResult() {
 
-    // if (test.setCard(this.id)) {
+    test.cards.forEach( card => {
+        card.flipped = true;
+    })
+
+
+    if (test.setCard(this.id)) {
         let frontCards = document.querySelectorAll('.colorFront');
 
         frontCards.forEach(frontCard => {
@@ -123,28 +146,43 @@ function colorResult() {
             backCard.style.display = "flex";
         })
 
-        // if(test.checkMatch()) {
-        //     questionHex.classList.add(CORRECT);
-        //     score++;
-        //     test.clearCard();
-        // } else {
-        //     questionHex.classList.add(WRONG);
-        //     test.clearCard();
-        // }
 
-    // }
+        if(test.checkMatch()) {
+            questionHex.classList.add(CORRECT);
+            score++;
+        } else {
+            questionHex.classList.add(WRONG);
+        }
+    }
+    
+    setTimeout(()=>{
 
+        if(round <= 10){
+            newRound();
+        } else {
+            // endGame();
+        }
 
-    // options.forEach(option => {
-    //     if(option.id == sortHex){
-    //         option.getElementsByClassName(FRONT).style.display = 'none';
-    //         option.getElementsByClassName(BACK).style.display = 'inlie-block';
-    //         option.classList.add(CORRECT);
-    //     } else {
-    //         option.getElementsByClassName(FRONT).style.display = 'none';
-    //         option.getElementsByClassName(BACK).style.display = 'inlie-block';
-    //         option.classList.add(WRONG);
-    //     }
-    // });
+    }, 1000)
 
 }
+
+function newRound() {
+
+    questionHex.className = '';
+    test.clearCard();
+    startGame();
+
+}
+
+
+// function endGame() {
+
+
+// }
+
+// function restar() {
+
+//     startGame();
+
+// }

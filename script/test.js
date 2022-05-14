@@ -16,24 +16,24 @@ let test = {
 
         let card = this.cards.filter(card=>card.id==id)[0];
 
-        console.log(card)
 
         if(card.fippled || this.lockMode) {
             return false;
         }
 
-        if(this.setedCard) {
+        if(!this.setedCard) {
             this.setedCard = card;
             this.lockMode = true;
             return true;
         }
+
 
     },
 
     // checando se a opção selecionada é a resposta certa
 
     checkMatch: function() {
-        return this.setedCard.id === this.sortHexa;
+        return this.setedCard.id == this.sortHexa;
     },
 
     // resetando a opção selecionada
@@ -93,7 +93,7 @@ let test = {
         return {
             id: color,
             bg: color,
-            fippled: false
+            flipped: false
         }
 
     }

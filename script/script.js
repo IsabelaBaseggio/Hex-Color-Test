@@ -87,6 +87,7 @@ function createSpaceFace(face, card, element) {
 
     if (face == FRONT) {
         colorElementFace.style.backgroundColor = "#" + card.id;
+        colorElementFace.style.cursor = 'pointer';
     } else {
         colorElementFace.innerHTML = "<strong>" + card.id + "</strong>";
         colorElementFace.style.color = "#" + card.id;
@@ -158,7 +159,7 @@ function colorResult() {
             endGame();
         }
 
-    }, 1000)
+    }, 2500)
 
 }
 

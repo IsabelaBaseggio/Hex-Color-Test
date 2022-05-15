@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/icon.PNG" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Kumar+One+Outline&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/style.css">
     <title>Document</title>
 </head>
 <body>
-
-
-
-
-
 
 
     <div class="containerContent">
@@ -23,15 +19,15 @@
         <button id="start" onclick="startGame()">Start</button>
     </header>
 
-    <main id="main">
+    <main id="main host">
 
-        <div class="containerQuestion">
+        <div id="containerQuestion">
             <h3>Which color does this hexadecimal represent?</h3>
-            <div class="hex">#12JO90</div>
+            <div id="hex"></div>
         </div>
 
-        <div class="colorsBoard">
-            <div class="color" id="5454">
+        <div id="colorsBoard">
+            <!-- <div class="color" id="5454" data-color="12JO90">
                 <div class="colorFront"></div>
                 <div class="colorBack">#12JO90</div>   
             </div>
@@ -46,7 +42,7 @@
             <div class="color" id="5454">
                 <div class="colorFront"></div>
                 <div class="colorBack">#12JO90</div>   
-            </div>
+            </div> -->
             
         </div>
     </main>
@@ -54,10 +50,12 @@
     </div>
 
     <div id="result"> 
-        <h2>Your score was 7/10, congratulations!</h2>
+        <h2 id="h2"></h2>
 
         <button id="restart" onclick="restart()">Restart</button>
     </div>
+
+    <script src="./script/test.js"></script>
 
     <script src="./script/script.js"></script>
 

@@ -9,16 +9,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .containerContent{
+    width: 100vw;
     max-width: 800px;
     padding: 10px;
     margin: auto;
 }
 
-header, .containerQuestion{
+header, #containerQuestion{
     max-width: 100%;
     margin: auto;
     padding: 10px;
@@ -34,10 +34,10 @@ h1{
     font-family: 'Kumar One Outline', Arial, Helvetica, sans-serif;
     font-size: 3em;
     padding: 10px;
-
 }
 
 #start{
+    cursor: pointer;
     width: 50%;
     padding: 20px;
     font-size: 20px;
@@ -45,18 +45,28 @@ h1{
     color: white;
     border: none;
     border-radius: 10px;
-    display: none;
+    display: inline-block;
 }
 
 #main{
     width: 100%;
-    display: inline-block;
 }
 
-.containerQuestion{
+/* @keyframes revealTest {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+} */
+
+#containerQuestion{
     margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 0 1em black;
+    display: none;
+    /* animation: revealMain 2s; */
 }
 
 h3{
@@ -65,7 +75,7 @@ h3{
     padding: 10px;
 }
 
-.hex{
+#hex{
     max-width: 50%;
     height: 40px;
     margin: auto;
@@ -73,12 +83,17 @@ h3{
     border-radius: 10px;
     background-color: rgb(01, 02, 03, 0.50);
     color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.hex, .colorBack{
+#hex, .colorBack{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 1.5em;
+    text-shadow: 0 0 0.2em black, 0 0 0.2em black;
 }
 
 
@@ -89,7 +104,7 @@ h3{
 }
 
 
-.colorsBoard{
+#colorsBoard{
     max-width: 100%;
     margin-bottom: 30px;
 
@@ -97,6 +112,8 @@ h3{
     grid-template: 1fr 1fr / 1fr 1fr;
 
     gap: 30px;
+
+    /* animation: revealMain 2s; */
 }
 
 .colorFront, .colorBack{
@@ -111,13 +128,12 @@ h3{
 
 .colorFront{
     box-shadow: 0 0 1em black;
-    display: none;
 }
 
 .colorBack{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(01, 02, 03, 0.50);   
-
+    background-color: rgb(01, 02, 03, 0.50);
+    display: none;
 }
 
 .correct{
@@ -138,7 +154,7 @@ h3{
     display: none;
 }
 
-h2{
+#h2{
     margin-top: calc(100% - 80%);
     margin-bottom: 30px;
     color: white;
@@ -147,6 +163,7 @@ h2{
 }
 
 #restart{
+    cursor: pointer;
     padding: 20px;
     font-size: 20px;
     background-color: purple;

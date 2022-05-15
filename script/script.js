@@ -15,6 +15,8 @@ let hex = null;
 
 let questionHex = null;
 
+let gameOver = null;
+
 let round = 1;
 
 let score = 0;
@@ -23,14 +25,6 @@ let score = 0;
 // iniciando o teste
 
 function startGame() {
-
-    colorsBoard = null;
-
-    colorElement = null;
-
-    colorElementFace = null;
-
-    round++;
 
     test.createColors();
 
@@ -157,10 +151,11 @@ function colorResult() {
     
     setTimeout(()=>{
 
-        if(round <= 10){
+        if(round < 10){
             newRound();
+            console.log(round);
         } else {
-            // endGame();
+            endGame();
         }
 
     }, 1000)
@@ -169,20 +164,35 @@ function colorResult() {
 
 function newRound() {
 
+    round++;
     questionHex.className = '';
+    colorsBoard.innerHTML = "";
     test.clearCard();
     startGame();
 
 }
 
 
-// function endGame() {
+function endGame() {
 
+        gameOver = document.getElementById("result");
+        gameOver.style.display = 'inline-block';
 
-// }
+        let result = document.getElementById("h2");
+        result.innerHTML = "Your score was " + score + "/10";
 
-// function restar() {
+}
 
-//     startGame();
+function restart() {
 
-// }
+    questionHex.className = '';
+    colorsBoard.innerHTML = "";
+    test.clearCard();
+
+    gameOver.style.display = 'none';
+
+    round = 1;
+
+    startGame();
+
+}

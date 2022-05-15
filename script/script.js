@@ -7,10 +7,6 @@ const COLOR = "color";
 
 let colorsBoard = null;
 
-let colorElement = null;
-
-let colorElementFace = null;
-
 let hex = null;
 
 let questionHex = null;
@@ -53,7 +49,7 @@ function initializeCards() {
 
     test.cards.forEach(card => {
 
-        colorElement = document.createElement("div");
+        let colorElement = document.createElement("div");
         colorElement.classList.add(COLOR);
         colorElement.id = card.id;
         colorElement.dataset.hex = card.id;
@@ -82,7 +78,7 @@ function createSpaceContent(card, colorElement) {
 
 function createSpaceFace(face, card, element) {
 
-    colorElementFace = document.createElement('div');
+    let colorElementFace = document.createElement('div');
     colorElementFace.classList.add(face);
 
     if (face == FRONT) {
@@ -193,6 +189,7 @@ function restart() {
     gameOver.style.display = 'none';
 
     round = 1;
+    score = 0;
 
     startGame();
 

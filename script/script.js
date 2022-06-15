@@ -155,7 +155,7 @@ function colorResult() {
             endGame();
         }
 
-    }, 2500)
+    }, 2000)
 
 }
 

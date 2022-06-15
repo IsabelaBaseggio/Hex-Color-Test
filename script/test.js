@@ -66,7 +66,7 @@ let test = {
 
     sortHex: function(){
 
-        this.sortHexa = this.colorsRand[Math.floor(Math.random() * (2 + 1))];
+        this.sortHexa = this.colorsRand[Math.floor(Math.random() * 4)];
 
         return this.sortHexa;
 

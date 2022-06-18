@@ -1,5 +1,7 @@
 # Hex Color Test
 
+[README(portuguese)](https://github.com/IsabelaBaseggio/Hex-Color-Test/blob/main/README.pt.md)
+
 #### Status: Done
 
 [![GitHub](https://img.shields.io/github/license/IsabelaBaseggio/Dev-Form)](https://github.com/IsabelaBaseggio/Hex_Color_Test/blob/main/LICENSE)
@@ -33,14 +35,14 @@ The quiz consists of drawing a hex color code each round as a question, with fou
  </p>
 
 
-## Tecnologias utilizadas
+## Technologies
 
 ### Front end
 - HTML / CSS
 - JavaScript
 
 
-## Autor
+## Author
 
 Isabela Ribeiro Baseggio
 
